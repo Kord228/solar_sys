@@ -21,7 +21,7 @@ model_time = 0
 """Физическое время от начала расчёта.
 Тип: float"""
 
-time_scale = 1000.0
+time_scale = 1000000.0
 """Шаг по времени при моделировании.
 Тип: float"""
 
@@ -36,6 +36,7 @@ def execution(delta):
     """
     global model_time
     global displayed_time
+    print(delta)
     recalculate_space_objects_positions([dr.obj for dr in space_objects], delta)
     model_time += delta
 
@@ -141,7 +142,7 @@ def main():
     pg.init()
     
     width = 800
-    height = 600
+    height = 800
     screen = pg.display.set_mode((width, height))
     last_time = time.perf_counter()
     drawer = Drawer(screen)
